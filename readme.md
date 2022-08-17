@@ -1,1 +1,1 @@
-### IMU Sensor Fusion
+## IMU Sensor Fusion
