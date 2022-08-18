@@ -19,3 +19,5 @@ $v_i(t) \approx \frac{\Delta t}{2}(a_i(0) + a_i(t) + \sum_{i=1}^{t-1}2a_i(t))$
 $x_i(t) \approx \frac{\Delta t}{2}(v_i(0) + v_i(t) + \sum_{i=1}^{t-1}2v_i(t))$
 
 Note that since the sensor is fixed, we can treat its lcoal acceleration as the space-fixed acceleration.
+
+In python, `integrate.cumulative_trapezoid()` from `scipy` is used. And this method is the integration function that would be used in other files as well.
