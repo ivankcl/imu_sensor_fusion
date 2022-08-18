@@ -98,6 +98,6 @@ def main(data, sample_size):
 
 if __name__ == '__main__':
 
-    d = IMUData('Data/calibration1.csv.nosync.csv')
+    d = IMUData('Data/data_freeAcc.csv.nosync.csv')
     for i in [10, 20, 100]:
         main(d, i)

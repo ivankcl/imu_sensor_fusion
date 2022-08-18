@@ -59,8 +59,7 @@ def main(data, a2v, v2d):
     plt.show()
 
 if __name__ == '__main__':
-    d = IMUData('Data/calibration1.csv.nosync.csv')
-
+    d = IMUData('Data/data_freeAcc.csv.nosync.csv')
     # filter parameter:
     a2v = [True, 4, 0.00056, 4, 0.00056, 4, 0.00056]
     v2d = [True, 4, 0.00056, 4, 0.00056, 4, 0.00056]
