@@ -34,6 +34,8 @@ Butterworth filter smooths out the frequency and produces a maximally flat respo
 The filter takes 3 parameters:
 order of filter, cut-off frequency and the functionality
 
+![alt text](Photo/Picture%201.png)
+
 The filter could reduce noise by reducing the amplitude of wave above or below a certain frequency of choice.
 However, using Butterworth filter would cause a phase shift. To eliminate the shift, the filter is applied forward and backward once.
 
@@ -101,6 +103,8 @@ We want to convert the local acceleration of the sensor to a space-fixed acceler
 
 Based on the formula below, we can first related the change of Euler angles and angular velocity. 
 
+![alt text](Photo/Picture2.png)
+
 Then, by integrating the formula, we could obtain the roll, pitch and yaw of the sensor at any given time. The integration module used this time is 
 `integrate.ode(Util().vdp).set_integrator("dopri5")`
 as it could solve differential equations.
@@ -127,6 +131,8 @@ phi = y[:,2]
 ```
 
 Based on the Euler angles we obtained, we can use the following formula to calculate the space-fixed acceleration.
+
+![alt text](Photo/Picture3.png)
 
 However, the Euler angle result is inaccurate. Instead of treating the whole acceleration data as a continuous set of data, an interval of 20 is taken for example. Hence, every 20 data points in the function are integrate using the ode method.
 
