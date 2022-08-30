@@ -7,27 +7,10 @@ from scipy.signal import kaiserord, lfilter, firwin, freqz
 
 def fir_filter(x, nyq = 40, width = 2.0, ripple = 60.0, cutoff = 4.0):
     nyq_rate = nyq / 2.0
+    N, beta = kaiserord(ripple, width/nyq_rate)
+    taps = firwin(N, cutoff/nyq_rate, window=('kaiser', beta))
 
-    # The desired width of the transition from pass to stop,
-    # relative to the Nyquist rate.  We'll design the filter
-    # with a 5 Hz transition width.
-    width = width/nyq_rate
-
-    # The desired attenuation in the stop band, in dB.
-    ripple_db = ripple
-
-    # Compute the order and Kaiser parameter for the FIR filter.
-    N, beta = kaiserord(ripple_db, width)
-
-    # The cutoff frequency of the filter.
-    cutoff_hz = cutoff
-
-    # Use firwin with a Kaiser window to create a lowpass FIR filter.
-    taps = firwin(N, cutoff_hz/nyq_rate, window=('kaiser', beta))
-
-    # Use lfilter to filter x with the FIR filter.
     filtered_x = lfilter(taps, 1.0, x)
-
     return filtered_x
 
 def main(data):
